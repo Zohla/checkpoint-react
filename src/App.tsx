@@ -1,13 +1,48 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import Header from './components/header/Header';
+import TextBox from './components/textbox/TextBox';
+import NewPlayer from './components/new_player/NewPlayer';
+import Table from './components/table/Table';
+import Points from './components/points/Points';
 import './App.css';
 
+
+export type Player = {
+  name: string;
+  color: string;
+  score: number;
+};
+
+export type PlayerColor = "blue" | "red" | "yellow";
+
 function App() {
+  const [inputValue, setInputValue] = useState("");
+  const [playerColor, setPlayerColor] = useState("");
+  const [isGameOver, setIsGameOver] = useState(false);
+  const [players, setPlayers] = useState<Player[]>([]);
+  
+  function addPlayer(){
+    console.log("add player");
+    const player:Player[] = [
+      {
+        name: inputValue,
+        color: playerColor,
+        score: 0
+      }
+    ];
+    setPlayers([...players, ...player]);
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        
-      </header>
+      <div id='game-container'>
+        <Header text="Welcome to my awesome team game!"/>
+        <TextBox/>
+        <NewPlayer inputValue={inputValue} setInputValue ={setInputValue} playerColor={playerColor} setPlayerColor={setPlayerColor} addPlayer={addPlayer} />
+        <Table players={players}/>
+        <Points isGameOver={isGameOver}/>
+
+      </div>
+      
     </div>
   );
 }
