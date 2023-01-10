@@ -32,6 +32,15 @@ function App() {
     ];
     setPlayers([...players, ...player]);
   }
+
+  function givePoints(color: string){
+    console.log("give points");
+    players.map((player) => {
+      if(player.color === color){
+        player.score += 1;
+      }}
+    );
+  }
   return (
     <div className="App">
       <div id='game-container'>
@@ -39,7 +48,7 @@ function App() {
         <TextBox/>
         <NewPlayer inputValue={inputValue} setInputValue ={setInputValue} playerColor={playerColor} setPlayerColor={setPlayerColor} addPlayer={addPlayer} />
         <Table players={players}/>
-        <Points isGameOver={isGameOver}/>
+        <Points isGameOver={isGameOver} givePoints={givePoints}/>
 
       </div>
       

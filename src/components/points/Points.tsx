@@ -16,10 +16,10 @@ const Points = ({isGameOver,givePoints}:PointsProps) => {
         <div className="points">
             <h2>Give points to any team!</h2>
             <div>
-                <button disabled={isGameOver} onClick={givePoints("blue")}>Blue</button>
-                <button disabled={isGameOver} onClick={givePoints("red")}>Red</button>
-                <button disabled={isGameOver} onClick={givePoints("yellow")}>Yellow</button>
-                <button disabled={isGameOver} onClick={givePoints(randomColor())}>Random</button>
+                <button disabled={isGameOver} onClick={() => givePoints("blue")}>Blue</button>
+                <button disabled={isGameOver} onClick={() => givePoints("red")}>Red</button>
+                <button disabled={isGameOver} onClick={() => givePoints("yellow")}>Yellow</button>
+                <button disabled={isGameOver} onClick={() => givePoints(randomColor())}>Random</button>
             </div>
         </div>
     )
